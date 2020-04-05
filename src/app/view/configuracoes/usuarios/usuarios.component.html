@@ -1,0 +1,54 @@
+<div  style="padding: 2% 2% 2% 2%; background-color: 
+White; border-style: solid 1px; margin: 2% 2% 2% 2%" >
+<div class="row">
+    <div style="font-size: 18px;" class="col-md-8"><span style="color: blue;" class="glyphicon glyphicon-search"></span>&nbsp;Consulta de usuarios</div>
+     
+  </div>
+  <div style="background-color: #f2f2f2; border-radius: 5px; padding: 5px 5px 5px 5px; border: 1px solid #dddddd;">
+  
+  <div class="row"> 
+    <div class="col-md-3"><input type="text" placeholder="Nome" [(ngModel)]="corpo.nome" class="form-control" id="email"></div>
+    <div class="col-md-3">   
+      <select style="height: 33px; top: -10px" [(ngModel)]="corpo.perfil" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+        <option value="" selected>Perfil</option>
+        <option [value]="i" *ngFor="let i of meu">{{i}}</option>
+        
+      </select>
+    </div>
+    <div class="col-md-3"><button type="button" (click)="pesquisausuario()" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>&nbsp;Buscar</button></div>
+    <div class="col-md-3" style="text-align: right"><button type="button" routerLink='/sistema/configuracao/cadastro-usuario' class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> novo usuario</button></div>
+  </div>
+</div>
+  <br>
+
+  
+
+<p-table [value]="usuario" [responsive]="true" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+        <tr> 
+            <th style="width:6%; text-align: center;">COD</th>
+            <th style="width:20%; text-align: center;" >NOME</th>
+            <th style="width:20%; text-align: center;">LOGIN</th>
+            <th style="width:15%; text-align: center;">PERFIL</th>
+            <th style="width:10%; text-align: center;">STATUS</th>
+            <th style="width:15%; text-align: center;">OPÇÕES</th>
+        </tr> 
+    </ng-template>
+    <ng-template pTemplate="body" let-obj>
+        <tr>
+            <td style="width:6%">{{obj.id_usuario}}</td>
+            <td style="width:20%">{{obj.nome}}</td>
+            <td style="width:20%">{{obj.login}}</td>
+            <td style="width:15%">{{obj.tipo}}</td>
+            
+            <td style="width:10%"><p style="text-align: center; color: green;" *ngIf="obj.status == true"> ATIVO </p> <p style="text-align: center; color: gray;" *ngIf="obj.status != true">INATIVO</p></td>
+            <td *ngIf="obj.status == true" style="width:12%; text-align: center;" > <button (click)="desativar(obj.id_usuario)" type="button" class="btn btn-danger">Desativar</button> &nbsp; <button style="text-align: center;" type="button" routerLink='/sistema/configuracao/edita-usuario/{{obj.id_usuario}}'  class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button></td>
+            <td *ngIf="obj.status != true" style="width:12%; text-align: center;"> <button (click)="ativar(obj.id_usuario)" type="button" class="btn btn-warning">Ativar</button>&nbsp; <button style="text-align: center;" type="button" routerLink='/sistema/configuracao/edita-usuario/{{obj.id_usuario}}'  class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button></td>
+        </tr>
+    </ng-template>
+</p-table>
+</div>
+
+
+
+ 

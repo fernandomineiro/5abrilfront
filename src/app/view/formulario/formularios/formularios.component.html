@@ -1,0 +1,66 @@
+<div  style="padding: 2% 2% 2% 2%; background-color: 
+White; border-style: solid 1px; margin: 2% 2% 2% 2%" >
+<div class="row">
+    <div style="font-size: 18px;" class="col-md-8"><span style="color: blue;" class="glyphicon glyphicon-search"></span>&nbsp;Consulta de menus</div>
+     
+  </div>
+  <div style="background-color: #f2f2f2; border-radius: 5px; padding: 5px 5px 5px 5px; border: 1px solid #dddddd;">
+   
+  <div class="row">
+    <div class="col-md-3"><input type="text" [(ngModel)]="corpo.nome" placeholder="Nome" class="form-control" id="email"></div>
+    <div class="col-md-3"><button type="button" (click)="pesquisaformulario()" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>&nbsp;Buscar</button></div>
+    <div class="col-md-3" style="text-align: right"><button type="button" routerLink='/sistema/formulario/cadastro-formulario' class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> novo formulario</button></div>
+  </div>
+</div>
+  <br>
+
+  
+
+<p-table [value]="formulario" [responsive]="true" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:6%; text-align: center;">COD</th>
+            <th style="width:34%; text-align: center;" >NOME</th>
+            <th style="width:15%; text-align: center;">TEMAS</th>
+            <th style="width:15%; text-align: center;">PERGUNTAS</th>
+            <th style="width:15%; text-align: center;">ATIVOS</th>
+            <th style="width:15%; text-align: center;">OPÇÕES</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-obj>
+        <tr>
+            <td style="width:6%">{{obj.id_questionario}}</td>
+            <td style="width:34%">{{obj.nome}}</td>
+            <td style="width:15%">{{obj.nr_perguntas}}</td>
+            <td style="width:15%">{{obj.nr_temas}}</td>
+            <td style="width:15%">{{obj.ativo}}</td>
+            <td style="width:12%"> <button *ngIf="obj.ativo == true" type="button" routerLink='/sistema/cadastro/editarfiliais/{{obj.id_filial}}' class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button> <button disabled *ngIf="obj.ativo == false" type="button" routerLink='/sistema/cadastro/editarfiliais/{{obj.id_filial}}' class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button>&nbsp; <button type="button" *ngIf="obj.ativo == true" (click)="desativa(obj.id_questionario)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button> <button type="button" *ngIf="obj.ativo != true" (click)="ativa(obj.id_questionario)" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span></button></td>
+        </tr>
+    </ng-template>
+</p-table>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Adicionar um novo estado</h4>
+        </div>
+        <div class="modal-body">
+            <label for="text">Nome:</label>
+            <input type="text" class="form-control" id="email">
+            <label for="text">Sigla:</label>
+            <input type="text" class="form-control" id="email">
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Salvar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>

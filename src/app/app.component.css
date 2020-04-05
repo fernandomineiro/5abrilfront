@@ -1,0 +1,19 @@
+.container-fluid {
+  height: 100vh;
+  position: relative;
+  text-align: center;
+}
+
+.container-fluid p-progressSpinner {
+  z-index: 999;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+>>> .ui-corner-all {
+  border-radius: 0 !important;
+}

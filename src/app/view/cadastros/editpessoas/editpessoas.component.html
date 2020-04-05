@@ -1,0 +1,121 @@
+<div  style="padding: 2% 2% 2% 2%; background-color: 
+White; border-style: solid 1px; margin: 2% 2% 2% 2%" >
+<div style="padding-bottom: 15px;" class="row">
+    <div style="font-size: 18px;" class="col-md-8"><span style="color: blue;" class="glyphicon glyphicon-plus"></span>&nbsp;Editar de pessoa</div>
+     
+  </div>  
+  <div style=" border-radius: 5px; padding: 15px 15px 20px 5px; border: 1px solid #dddddd;">
+    <span class="ui-float-label">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+        <p  style="font-weight: bolder; color: #5c5c5c">Nome</p>
+        <input id="float-input" [value]="nome" [(ngModel)]="corpo.nome" id="inlineFormCustomSelectPref" type="text"   name="nome"  size="30" pInputText> 
+    </div>
+    <div class="col-3">
+        <p  style="font-weight: bolder; color: #5c5c5c">Endereço</p>
+        <input id="float-input" [value]="endereco" [(ngModel)]="corpo.endereco" id="inlineFormCustomSelectPref" type="text"   name="nome"  size="30" pInputText> 
+    </div>     
+    </div>
+        </div>
+    </span><br>
+    <span>
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <p  style="font-weight: bolder; color: #5c5c5c">Bairro</p>
+                  <input id="float-input" [value]="bairro" [(ngModel)]="corpo.bairro" id="inlineFormCustomSelectPref" type="text"   name="nome"  size="30" pInputText> 
+                </div>
+                <div class="col-3">
+        <p style="font-weight: bolder; color: #5c5c5c">Municipio</p>
+        <select style="width: 272px; height: 35px;" [(ngModel)]="corpo.municipio"  name="role_menu"  class="custom-select" id="inlineFormCustomSelectPref">
+       
+      <option [value]="i.id_municipio"  *ngFor="let i of m">{{i.nome}}</option>
+      </select>
+      </div>
+            </div>
+        </div>
+    </span> 
+    <span class="ui-float-label">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+        <p  style="font-weight: bolder; color: #5c5c5c">Telefone</p>
+        <input id="float-input" [value]="telefone" [(ngModel)]="corpo.telefone" id="inlineFormCustomSelectPref" type="text"   name="nome"  size="30" pInputText> 
+    </div>
+    <div class="col-3">
+        <p  style="font-weight: bolder; color: #5c5c5c">Celular</p>
+        <input id="float-input" [value]="celular" [(ngModel)]="corpo.celular" id="inlineFormCustomSelectPref" type="text"   name="nome"  size="30" pInputText> 
+    </div>     
+    </div>
+        </div> 
+    </span><br>
+    <span class="ui-float-label">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+        <p  style="font-weight: bolder; color: #5c5c5c">CPF</p>
+        <input id="float-input" [value]="cpf" [(ngModel)]="corpo.cpf" id="inlineFormCustomSelectPref" type="text"   name="nome"  size="30" pInputText> 
+    </div>
+    <div class="col-3">
+        <p  style="font-weight: bolder; color: #5c5c5c">EMAIL</p>
+        <input id="float-input" [value]="email" [(ngModel)]="corpo.email" id="inlineFormCustomSelectPref" type="text"   name="nome"  size="30" pInputText> 
+    </div>     
+    </div>
+        </div>
+    </span><br>
+    
+    <span class="ui-float-label">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+        <p  style="font-weight: bolder; color: #5c5c5c">CREA</p>
+        <input id="float-input" [value]="crea" [(ngModel)]="corpo.crea" id="inlineFormCustomSelectPref" type="text"   name="nome"  size="30" pInputText> 
+    </div>
+     
+    </div>  
+        </div>
+    </span><br>
+
+    <span class="ui-float-label">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+        <p  style="font-weight: bolder; color: #5c5c5c">TIPO DE PESSOA</p>
+        <div class="form-check form-check-inline">
+            <input *ngIf="produtor == true" class="form-check-input" checked [(ngModel)]="corpo.produtor" type="checkbox" id="inlineCheckbox2" value="true">
+            <input *ngIf="produtor != true" class="form-check-input"  [(ngModel)]="corpo.produtor" type="checkbox" id="inlineCheckbox2" value="true">
+            <label class="form-check-label" for="inlineCheckbox2">Produtor?</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input *ngIf="consultor == true" class="form-check-input" checked [(ngModel)]="corpo.consultor" type="checkbox" id="inlineCheckbox2" value="true">
+            <input *ngIf="consultor != true" class="form-check-input" checked [(ngModel)]="corpo.consultor" type="checkbox" id="inlineCheckbox2" value="true">
+            <label class="form-check-label" for="inlineCheckbox2">Consultor?</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input *ngIf="administrador == true" class="form-check-input" [(ngModel)]="corpo.administrador"  type="checkbox" id="inlineCheckbox2" value="true">
+            <input *ngIf="administrador != true" class="form-check-input" [(ngModel)]="corpo.administrador"  type="checkbox" id="inlineCheckbox2" value="true">
+            <label class="form-check-label" for="inlineCheckbox2">Administrador?</label>
+          </div>
+    </div>
+     
+    </div>
+        </div>
+    </span><br> 
+
+    <br><br>
+    <button type="button" (click)="salvardados()" class="btn btn-success" data-dismiss="modal">Salvar</button> &nbsp; &nbsp;
+    <button style="text-align: right;" routerLink='/sistema/cadastro/pessoas' type="button" class="btn btn-secondary" style="text-align: left;" data-dismiss="modal">Voltar</button>
+    <div *ngIf="sucesso == true">
+        <div class="alert alert-success" id="sucesso" role="alert">
+            Editado com sucesso
+          </div>
+      </div>
+</div>
+  <br>
+
+  
+  
+
+
+</div>

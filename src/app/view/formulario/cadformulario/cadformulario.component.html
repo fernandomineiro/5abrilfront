@@ -1,0 +1,47 @@
+
+<div  style="padding: 2% 2% 2% 2%; background-color: 
+White; border-style: solid 1px; margin: 2% 2% 2% 2%" > 
+<div style="padding-bottom: 15px;" class="row">
+    <div style="font-size: 18px;" class="col-md-8"><span style="color: blue;" class="glyphicon glyphicon-plus"></span>&nbsp;Cadastro de formulario</div>
+         
+  </div> 
+  <div style="background-color: #f2f2f2; border-radius: 5px; padding: 15px 15px 25px 5px; border: 1px solid #dddddd;">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <span class="ui-float-label">
+        <p style="font-weight: bolder; color: #5c5c5c">Nome</p>
+        <input id="float-input" type="text" style="border-color: gray;" formControlName="nome"  name="nome" [ngClass]="{ 'is-invalid': submitted && f.nome.errors }"  size="30" pInputText> 
+        <div *ngIf="submitted && f.nome.errors" >
+          <div *ngIf="f.nome.errors.required">Nome é obrigatório</div>
+      </div>
+      </span>
+      <span class="ui-float-label">
+        <p style="font-weight: bolder; color: #5c5c5c">Temas</p>
+        <input id="float-input" type="number" style="border-color: gray;" formControlName="tema"  name="tema" [ngClass]="{ 'is-invalid': submitted && f.tema.errors }"  size="30" pInputText> 
+        <div *ngIf="submitted && f.tema.errors" >
+          <div *ngIf="f.tema.errors.required">Tema é obrigatório</div>
+      </div>
+      </span>
+      <span class="ui-float-label">
+        <p style="font-weight: bolder; color: #5c5c5c">Perguntas</p>
+        <input id="float-input" type="number" style="border-color: gray;" formControlName="pergunta"  name="pergunta" [ngClass]="{ 'is-invalid': submitted && f.pergunta.errors }"  size="30" pInputText> 
+        <div *ngIf="submitted && f.pergunta.errors" >
+          <div *ngIf="f.pergunta.errors.required">Pergunta é obrigatório</div>
+      </div>
+      </span>
+     
+    <br><br>
+    <button class="btn btn-primary mr-1">Registrar</button> &nbsp; &nbsp;
+    <button style="text-align: right;" routerLink='/sistema/formulario/formulario' type="button" class="btn btn-secondary" style="text-align: left;" data-dismiss="modal">Voltar</button>
+  </form>
+</div>
+  <br>
+
+  <div *ngIf="sucesso == true">
+    <div class="alert alert-success" id="sucesso" role="alert">
+        Cadastro feito com sucesso
+      </div>
+  </div>
+  
+
+
+</div>

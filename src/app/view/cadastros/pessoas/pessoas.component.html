@@ -1,0 +1,60 @@
+<div  style="padding: 2% 2% 2% 2%; background-color: 
+White; border-style: solid 1px; margin: 2% 2% 2% 2%" >
+<div class="row">
+    <div style="font-size: 18px;" class="col-md-8"><span style="color: blue;" class="glyphicon glyphicon-search"></span>&nbsp;Consulta de pessoas</div>
+     
+  </div>
+  <div style="background-color: #f2f2f2; border-radius: 5px; padding: 5px 5px 5px 5px; border: 1px solid #dddddd;">
+  
+  <div class="row">
+    <div class="col-md-2"><input type="text" [(ngModel)]="corpo.nome" placeholder="Nome" class="form-control" id="email"></div>
+    <div class="col-md-2"><input type="text" [(ngModel)]="corpo.cpf" placeholder="CPF" width="30px" class="form-control" ></div>
+    <div class="col-md-2"><input type="text" [(ngModel)]="corpo.municipio" placeholder="Município" width="30px" class="form-control" ></div>
+    <div class="col-md-3" style="text-align: right;"><button type="button" (click)="pesquisapessoa()" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>&nbsp;Buscar</button></div>
+    <div class="col-md-3" style="text-align: right;"><button type="button" routerLink='/sistema/cadastro/cadastro-pessoas'  class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Nova pesssoa</button></div>
+  </div>
+</div>
+  <br>
+
+  
+
+<p-table [value]="pessoas" [responsive]="true" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:6%; text-align: center;">COD</th>
+            <th style="width:30%; text-align: center;" >NOME</th>
+            <th style="width:20%; text-align: center;">CPF</th>
+            <th style="width:15%; text-align: center;">TELEFONE</th>
+            <th style="width:15%; text-align: center;">MUNICIPIO</th>
+            <th style="width:12%; text-align: center;">OPÇÕES</th> 
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-obj>
+        <tr> 
+            <td style="width:6%">{{obj.id_pessoa}}</td>
+            <td *ngIf="obj.acesso == true" style="width:30%">{{obj.nome}}</td> <td *ngIf="obj.acesso != true" style="width:30%; color: gray">{{obj.nome}}</td> 
+            <td *ngIf="obj.acesso == true" style="width:20%">{{obj.cpf}}</td>  <td *ngIf="obj.acesso != true" style="width:20%; color: gray;">{{obj.cpf}}</td>
+            <td *ngIf="obj.acesso == true" style="width:15%">{{obj.telefone}}</td> <td *ngIf="obj.acesso != true" style="width:15%; color: gray;">{{obj.telefone}}</td>
+            <td *ngIf="obj.acesso == true" style="width:15%">{{obj.municipio}}</td> <td *ngIf="obj.acesso != true" style="width:15%; color: gray;">{{obj.municipio}}</td>
+            <td style="width:12%"> <button routerLink='/sistema/cadastro/editarpessoas/{{obj.id_pessoa}}' type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button>&nbsp; <button type="button" *ngIf="obj.acesso == true" (click)="desativa(obj.id_pessoa)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button> <button type="button" *ngIf="obj.acesso != true" (click)="ativa(obj.id_pessoa)" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span></button></td>
+        </tr>
+    </ng-template>
+</p-table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Você deseja remover {{nome}} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">sair</button>
+        <button type="button" class="btn btn-primary">Remover</button>
+      </div>
+    </div>
+  </div>

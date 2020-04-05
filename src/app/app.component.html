@@ -1,0 +1,4 @@
+<div class="container-fluid" *ngIf="loading">
+  <p-progressSpinner animationDuration="0.8s"></p-progressSpinner>
+</div>
+<router-outlet *ngIf="!loading"></router-outlet>

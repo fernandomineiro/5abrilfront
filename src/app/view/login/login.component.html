@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <p-card [style]="{ width: '380px', height: '400px' }">
+    <nz-tabset
+      [nzSelectedIndex]="index"
+      nzSize="small"
+      nzTabPosition="bottom"
+      nzShowPagination="false"
+    >
+      <nz-tab>
+        <img
+          src="../../assets/logo_biodiesel_peq.png"
+          alt="Logo CheckMilk"
+          style="width: 60%; margin-top: 5%; height: 80px;"
+        />
+        <h4><b>Bem vindo</b></h4>
+        <p>Informe seu usuário e senha</p>
+        <form>
+          <span class="ui-float-label">
+            <input
+              type="text"
+              style="width: 80%;"
+              pInputText
+              name="user"
+              [(ngModel)]="login"
+            />
+            <label for="float-input"
+              ><span><i class="fa fa-user"></i> </span> usuário</label
+            >
+          </span>
+          <span class="ui-float-label">
+            <input
+              type="password"
+              name="password"
+              style="width: 80%;"
+              pInputText
+              [(ngModel)]="senha"
+            />
+            <label for="float-input">
+              <span><i class="fa fa-lock"></i> </span> senha
+            </label>
+          </span>
+          <button
+          style="background-color: green;"
+            *ngIf="!isCarregando"
+            pButton
+            type="submit"
+            label="ENTRAR"
+            (click)="logar()"
+          ></button>
+          
+        </form>
+      </nz-tab>
+    
+    </nz-tabset>
+  </p-card>
+  <particles
+    [params]="particlesParams"
+    [style]="particlesStyle"
+    [width]="particlesWidth"
+    [height]="particlesHeight"
+  >
+  </particles>
+</div>

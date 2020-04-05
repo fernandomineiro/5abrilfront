@@ -1,0 +1,146 @@
+<div  style="padding: 2% 2% 2% 2%; background-color: 
+White; border-style: solid 1px; margin: 2% 2% 2% 2%" >
+<div style="padding-bottom: 15px;" class="row">
+    <div style="font-size: 18px;" class="col-md-8"><span style="color: blue;" class="glyphicon glyphicon-plus"></span>&nbsp;Cadastro de pessoa</div>
+     
+  </div>   
+  <div style=" border-radius: 5px; padding: 15px 15px 20px 5px; border: 1px solid #dddddd;">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <span class="ui-float-label">
+        <div class="container">
+            <div class="row">
+                  <div class="col-3">
+        <p  style="font-weight: bolder; color: #5c5c5c">Nome</p>
+        <input id="float-input" formControlName="nome" [ngClass]="{ 'is-invalid': submitted && f.nome.errors }"   id="inlineFormCustomSelectPref" type="text"     size="30" pInputText> 
+        <div *ngIf="submitted && f.nome.errors" >
+            <div *ngIf="f.nome.errors.required">Nome é obrigatório</div>
+        </div>     
+    </div>
+    <div class="col-3">
+        <p  style="font-weight: bolder; color: #5c5c5c">Endereço</p>
+        <input id="float-input"  [ngClass]="{ 'is-invalid': submitted && f.endereco.errors }" formControlName="endereco"  id="inlineFormCustomSelectPref" type="text"    size="30" pInputText> 
+        <div *ngIf="submitted && f.endereco.errors" >
+            <div *ngIf="f.endereco.errors.required">Endereço é obrigatório</div>
+         </div>
+    </div>     
+    </div>
+        </div> 
+    </span><br>
+    <span> 
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <p  style="font-weight: bolder; color: #5c5c5c">Bairro</p>
+                    <input formControlName="bairro" [ngClass]="{ 'is-invalid': submitted && f.bairro.errors }"  id="float-input" id="inlineFormCustomSelectPref" type="text"     size="30" pInputText> 
+                    <div *ngIf="submitted && f.bairro.errors" >
+                        <div *ngIf="f.bairro.errors.required">Bairro é obrigatório</div>
+                    </div>  
+                </div>
+                <div class="col-3">
+        <p style="font-weight: bolder; color: #5c5c5c">Municipio</p>
+        <select style="width: 272px; height: 35px;" [ngClass]="{ 'is-invalid': submitted && f.municipio.errors }" formControlName="municipio"  name="role_menu"  class="custom-select" id="inlineFormCustomSelectPref">
+            <option value="">Selecione...</option>
+      <option [value]="i.id_municipio"   *ngFor="let i of m">{{i.nome}}</option>
+      </select>
+      <div *ngIf="submitted && f.municipio.errors" >
+        <div *ngIf="f.municipio.errors.required">Município é obrigatório</div>
+    </div>  
+    </div>
+            </div>
+        </div>
+    </span>
+    <span class="ui-float-label">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+        <p  style="font-weight: bolder; color: #5c5c5c">Telefone</p>
+        <input id="float-input" mask='(00) 0000-0000' [dropSpecialCharacters]="false" [ngClass]="{ 'is-invalid': submitted && f.telefone.errors }" formControlName="telefone"   id="inlineFormCustomSelectPref" type="text"     size="30" pInputText> 
+        <div *ngIf="submitted && f.telefone.errors" >
+            <div *ngIf="f.telefone.errors.required">Telefone é obrigatório</div>
+        </div>          
+    </div>
+    <div class="col-3">
+        <p  style="font-weight: bolder; color: #5c5c5c">Celular</p>
+        <input id="float-input" mask='(00) 00000-0000' [dropSpecialCharacters]="false" [ngClass]="{ 'is-invalid': submitted && f.celular.errors }" formControlName="celular"  id="inlineFormCustomSelectPref"   type="text"     size="30" pInputText> 
+        <div *ngIf="submitted && f.celular.errors" >
+            <div *ngIf="f.celular.errors.required">Celular é obrigatório</div>
+        </div>
+    </div>     
+    </div>
+        </div>
+    </span><br>
+    <span class="ui-float-label">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+        <p  style="font-weight: bolder; color: #5c5c5c">CPF</p>
+        <input id="float-input" mask='000.000.000-00' [dropSpecialCharacters]="false" [ngClass]="{ 'is-invalid': submitted && f.cpf.errors }" formControlName="cpf"  id="inlineFormCustomSelectPref"   type="text"    size="30" pInputText> 
+        <div *ngIf="submitted && f.cpf.errors" >
+            <div *ngIf="f.cpf.errors.required">CPF é obrigatório</div>
+        </div>           
+    </div>
+    <div class="col-3">
+        <p  style="font-weight: bolder; color: #5c5c5c">EMAIL</p>
+        <input id="float-input" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" formControlName="email"  id="inlineFormCustomSelectPref"   type="text"     size="30" pInputText> 
+        <div *ngIf="submitted && f.email.errors" >
+            <div *ngIf="f.email.errors.required">Email é orbigatório</div>
+        </div>
+    </div>     
+    </div>
+        </div>
+    </span><br>
+    
+    <span class="ui-float-label">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+        <p  style="font-weight: bolder; color: #5c5c5c">CREA</p>
+        <input id="float-input" [ngClass]="{ 'is-invalid': submitted && f.crea.errors }" formControlName="crea" id="inlineFormCustomSelectPref" type="text"   size="30" pInputText> 
+        <div *ngIf="submitted && f.crea.errors" >
+            <div *ngIf="f.crea.errors.required">CREA é obrigatório</div>
+        </div>        
+    </div>
+     
+    </div>
+        </div>
+    </span><br>
+
+    <span class="ui-float-label">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+        <p  style="font-weight: bolder; color: #5c5c5c">TIPO DE PESSOA</p>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" formControlName="produtor" id="inlineCheckbox2" value="true">
+            <label class="form-check-label" for="inlineCheckbox2">Produtor?</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" formControlName="consultor" id="inlineCheckbox2" value="true">
+            <label class="form-check-label" for="inlineCheckbox2">Consultor?</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" formControlName="administrador" id="inlineCheckbox2" value="true">
+            <label class="form-check-label" for="inlineCheckbox2">Administrador?</label>
+          </div>
+    </div>
+     
+    </div>
+        </div>
+    </span><br>
+
+    <br><br>
+    <button class="btn btn-primary mr-1">Registrar</button> &nbsp; &nbsp;
+    <button style="text-align: right;" routerLink='/sistema/cadastro/pessoas' type="button" class="btn btn-secondary" style="text-align: left;" data-dismiss="modal">Voltar</button>
+</form>
+</div>
+  <br>
+
+  <div *ngIf="sucesso == true">
+    <div class="alert alert-success" id="sucesso" role="alert">
+        Cadastro feito com sucesso
+      </div>
+  </div>
+  
+
+
+</div>

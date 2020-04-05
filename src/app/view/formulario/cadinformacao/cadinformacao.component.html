@@ -1,0 +1,48 @@
+
+<div  style="padding: 2% 2% 2% 2%; background-color: 
+White; border-style: solid 1px; margin: 2% 2% 2% 2%" > 
+<div style="padding-bottom: 15px;" class="row">
+    <div style="font-size: 18px;" class="col-md-8"><span style="color: blue;" class="glyphicon glyphicon-plus"></span>&nbsp;Cadastro de imformação</div>
+        
+  </div> 
+  <div style="background-color: #f2f2f2; border-radius: 5px; padding: 15px 15px 25px 5px; border: 1px solid #dddddd;">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <span class="ui-float-label">
+        <p style="font-weight: bolder; color: #5c5c5c">Nome</p>
+        <input id="float-input" formControlName="nome" [ngClass]="{ 'is-invalid': submitted && f.nome.errors }" id="inlineFormCustomSelectPref" type="text"   name="nome"  size="30" pInputText> 
+        <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
+          <div *ngIf="f.nome.errors.required">Nome é obrigatório</div>
+      </div>
+      </span> 
+    <span class="ui-float-label">
+        <p style="font-weight: bolder; color: #5c5c5c">Valor</p>
+        <input id="float-input" formControlName="valor" id="inlineFormCustomSelectPref" type="text"     size="30" [ngClass]="{ 'is-invalid': submitted && f.valor.errors }" pInputText> 
+        <div *ngIf="submitted && f.valor.errors" class="invalid-feedback">
+          <div *ngIf="f.valor.errors.required">Valor é obrigatório</div>
+      </div>
+      </span>
+    <span class="ui-float-label">
+        <p style="font-weight: bolder; color: #5c5c5c">Posição</p>
+        <input id="float-input" formControlName="posicao" id="inlineFormCustomSelectPref" type="text"     size="30" [ngClass]="{ 'is-invalid': submitted && f.posicao.errors }" pInputText> 
+        <div *ngIf="submitted && f.posicao.errors" class="invalid-feedback">
+          <div *ngIf="f.posicao.errors.required">Posição é obrigatório</div>
+      </div>
+      </span>
+    
+    
+    <br><br>
+    <button class="btn btn-primary mr-1">Registrar</button> &nbsp; &nbsp;
+    <button style="text-align: right;" routerLink='/sistema/formulario/informacao' type="button" class="btn btn-secondary" style="text-align: left;" data-dismiss="modal">Voltar</button>
+  </form>
+</div>
+  <br>
+
+  <div *ngIf="sucesso == true">
+    <div class="alert alert-success" id="sucesso" role="alert">
+        Cadastro feito com sucesso
+      </div>
+  </div>
+  
+
+
+</div>

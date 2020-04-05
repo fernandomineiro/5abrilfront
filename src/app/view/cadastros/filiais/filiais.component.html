@@ -1,0 +1,62 @@
+<div  style="padding: 2% 2% 2% 2%; background-color: 
+White; border-style: solid 1px; margin: 2% 2% 2% 2%" >
+<div class="row">
+    <div style="font-size: 18px;" class="col-md-8"><span style="color: blue;" class="glyphicon glyphicon-search"></span>&nbsp;Consulta de filiais</div> 
+    <div *ngIf="d == true" class="alert alert-info" id="d">
+      <strong>Atenção!</strong> Ativado com sucesso!.
+    </div>
+    <div *ngIf="c == true" class="alert alert-info" id="d">
+      <strong>Atenção!</strong> Desativado com sucesso!.
+    </div>
+        
+  </div> 
+  <div style="background-color: #f2f2f2; border-radius: 5px; padding: 5px 5px 5px 5px; border: 1px solid #dddddd;">
+  
+  <div class="row">
+    <div class="col-md-4"><input type="text" [(ngModel)]="corpo.nome"  placeholder="Nome" class="form-control" id="email"></div>
+    
+    <div class="col-md-4"><button type="button" (click)="pesquisafilial()" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>&nbsp;Buscar</button></div>
+    <div class="col-md-4" style="text-align: right"><button type="button" routerLink='/sistema/cadastro/cadastro-filiais' class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Nova filial</button></div>
+  </div>
+</div>
+  <br>
+
+   
+
+<p-table [value]="filiais" [responsive]="true" [paginator]="true" [rows]="10"> 
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:10%; text-align: center;">COD</th>
+            <th style="width:78%; text-align: center;" >NOME</th>
+            <th style="width:12%; text-align: center;">OPÇÕES</th>
+         </tr> 
+    </ng-template>
+    <ng-template pTemplate="body" let-obj>
+        <tr>
+            <td style="width:6%">{{obj.id_filial}}</td> 
+            <td *ngIf="obj.acesso == true" style="width:51%">{{obj.nome}}</td> <td  *ngIf="obj.acesso == false" style="width:51%; color: gray">{{obj.nome}}</td>
+            <td style="width:12%"> <button *ngIf="obj.acesso == true" type="button" routerLink='/sistema/cadastro/editarfiliais/{{obj.id_filial}}' class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button> <button disabled *ngIf="obj.acesso == false" type="button" routerLink='/sistema/cadastro/editarfiliais/{{obj.id_filial}}' class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button>&nbsp; <button type="button" *ngIf="obj.acesso == true" (click)="desativa(obj.id_filial)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button> <button type="button" *ngIf="obj.acesso != true" (click)="ativa(obj.id_filial)" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span></button></td>
+        </tr> 
+    </ng-template>
+</p-table>
+</div>
+
+
+
+<!-- Remover-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Você deseja remover {{nome}} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">sair</button>
+        <button type="button" class="btn btn-primary">Remover</button>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,70 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- Sidebar Menu -->
+
+    <ul class="sidebar-menu" data-widget="tree">
+      <!-- <li class="header" style="margin: 0; padding: 0;">
+        <a nz-dropdown [nzDropdownMenu]="menu" nzTrigger="click">
+          {{ certificadoraSelecionada.nome }}
+          <i style="float: right;" class="glyphicon glyphicon-chevron-down"></i>
+        </a>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu nzSelectable>
+            <li
+              *ngFor="let certificadora of usuarioLogado.certificadoras"
+              nz-menu-item
+              (click)="setCertificadoraSelecionada(certificadora)"
+            >
+              {{ certificadora.nome }}
+            </li>
+          </ul>
+        </nz-dropdown-menu>
+      </li> -->
+      <ng-template ngFor let-link [ngForOf]="links" let-i="index" >
+        <li
+        
+          *ngIf="!link.children"
+          [class.active]="_aba == link.url"
+          [class.treeview]="link.children"
+        >
+          <a
+            id="menu"
+            routerLink="{{ link.url }}"
+            role="button"
+            (click)="setActive(link.url)"
+          >
+            <i class="{{ link.icon }}"></i> <span id="menu"> {{ link.label }}</span>
+          </a>
+        </li>
+
+        <li
+          *ngIf="link.children"
+          class="treeview"
+          [class.active]="_aba.substr(9, 4) == link.url"
+        >
+          <a role="button" id="menu">
+            <i class="{{ link.icon }}"></i> <span id="menu"> {{ link.label }}</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li
+              *ngFor="let child of link.children"
+              [class.active]="_aba == child.url"
+            >
+              <a (click)="setActive(child.url)" routerLink="{{ child.url }}">
+                {{ child.label }}
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ng-template>
+    </ul>
+
+    <!-- /.sidebar-menu -->
+  </section>
+  <!-- /.sidebar -->
+</aside>

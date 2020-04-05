@@ -1,0 +1,117 @@
+<div  style="padding: 2% 2% 2% 2%; background-color: 
+White; border-style: solid 1px; margin: 2% 2% 2% 2%" >
+<div style="padding-bottom: 15px;" class="row">
+    <div style="font-size: 18px;" class="col-md-8"><span style="color: blue;" class="glyphicon glyphicon-plus"></span>&nbsp;Cadastro de usuario</div>
+     
+  </div>  
+  <div style=" border-radius: 5px; padding: 15px 15px 20px 5px; border: 1px solid #dddddd;">
+    
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Cadastro</a></li>
+        <li><a href="#tab2" data-toggle="tab">Permissões</a></li>
+      </ul>
+
+      
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+          <div class="container">
+            <div class="row">
+              <div class="col-3">
+          <span class="ui-float-label">
+            <form>
+              <img src="../../assets/a.jpeg" alt="Avatar" class="avatar"><br>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile"><br>
+                <label class="custom-file-label" for="customFile">Editar foto</label>
+              </div>
+            </form>
+        </span><br> 
+              </div> 
+              <div class="col-4">
+    <span class="ui-float-label">
+        <p  style="font-weight: bolder; color: #5c5c5c">Login</p>
+        <input id="float-input" [(ngModel)]="corpo.login"  id="inlineFormCustomSelectPref" type="text"   name="nome"  size="30" pInputText> 
+    </span><br>
+    <div *ngIf="submitted && f.login.errors" class="invalid-feedback">
+      <div *ngIf="f.login.errors.required">Login é obrigatório</div>
+  </div> 
+    <span class="ui-float-label">
+        <p  style="font-weight: bolder; color: #5c5c5c">Senha</p>
+        <input id="float-input"  id="inlineFormCustomSelectPref" [(ngModel)]="corpo.senha" type="text"   name="nome"  size="30" pInputText> 
+    </span><br>
+    <div *ngIf="submitted && f.senha.errors" class="invalid-feedback">
+      <div *ngIf="f.senha.errors.required">Senha é obrigatório</div>
+  </div>
+    <span>
+        <p style="font-weight: bolder; color: #5c5c5c">Perfil</p>
+        <select style="width: 272px; height: 35px;" [(ngModel)]="corpo.perfil"   name="role_menu"  class="custom-select" id="inlineFormCustomSelectPref">
+         
+      <option [value]="i.id_perfil"  *ngFor="let i of b">{{i.nome}}</option>
+      </select>
+      <div *ngIf="submitted && f.perfil.errors" class="invalid-feedback">
+        <div *ngIf="f.perfil.errors.required">Perfil é obrigatório</div>
+    </div>
+    </span>  
+    <span>
+        <p style="font-weight: bolder; color: #5c5c5c">Pessoa</p>
+        <select style="width: 272px;  height: 35px;" [(ngModel)]="corpo.pessoa"   name="role"  class="custom-select" id="inlineFormCustomSelectPref">
+         
+      <option [value]="i.id_pessoa"  *ngFor="let i of a">{{i.nome}}</option>
+      </select>
+      <div *ngIf="submitted && f.pessoa.errors" class="invalid-feedback">
+        <div *ngIf="f.pessoa.errors.required">Pessoa é obrigatório</div>
+    </div>
+    </span>
+    <br><br>
+              </div>
+            </div>
+          </div>
+  </div>
+  <div class="tab-pane" id="tab2">
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group" >
+            <label for="exampleFormControlSelect2">Produtoes sem permissão</label>
+            <select multiple class="form-control" style="height: 100px;" [(ngModel)]="corpo.pessoa" id="exampleFormControlSelect2">
+              <option [value]="i.id_pessoa"  *ngFor="let i of pessoaa">{{i.nome}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-1">
+          <button type="button" (click)="add()" style="text-align: center;" class="btn btn-success">></button><br>
+          <button type="button" (click)="addtodos()" class="btn btn-success">-></button><br>
+          <button type="button" (click)="remove()" class="btn btn-success"> < </button><br>
+          <button type="button" (click)="removetodos()" class="btn btn-success"> <- </button>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label for="exampleFormControlSelect2">Produtoes com permissão</label>
+            <select multiple class="form-control" style="height: 100px;" id="exampleFormControlSelect2">
+              <select multiple class="form-control" style="height: 100px;" [(ngModel)]="corpo.pessoa" id="exampleFormControlSelect2">
+              <option [value]="i.id_pessoa"  *ngFor="let i of pessoaa">{{i.nome}}</option>
+            </select>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<button class="btn btn-primary mr-1">Salvar</button> &nbsp; &nbsp;
+    <button style="text-align: right;" routerLink='/sistema/configuracao/usuario' type="button" class="btn btn-secondary" style="text-align: left;" data-dismiss="modal">Voltar</button>
+  
+</div>
+  <br> 
+
+  <div *ngIf="sucesso == true">
+    <div class="alert alert-success" id="sucesso" role="alert">
+        Cadastro feito com sucesso
+      </div>
+  </div>
+  
+
+
+</div>

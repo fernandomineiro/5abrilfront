@@ -1,0 +1,33 @@
+
+<div  style="padding: 2% 2% 2% 2%; background-color: 
+White; border-style: solid 1px; margin: 2% 2% 2% 2%" > 
+<div style="padding-bottom: 15px;" class="row">
+    <div style="font-size: 18px;" class="col-md-8"><span style="color: blue;" class="glyphicon glyphicon-plus"></span>&nbsp;Editar perfil</div>
+       
+  </div> 
+  <div style="background-color: #f2f2f2; border-radius: 5px; padding: 15px 15px 25px 5px; border: 1px solid #dddddd;">
+    <span class="ui-float-label">
+        <p style="font-weight: bolder; color: #5c5c5c">Nome</p>
+        <input id="float-input" type="text" [value]="nome" style="border-color: gray;" [(ngModel)]="corpo.nome" name="nome"  size="30" pInputText> 
+    </span>
+    <span class="ui-float-label" style="top: 20px">
+        <p style="font-weight: bolder; color: #5c5c5c">Tipo</p>
+        <input id="float-input" [value]="tipopermissao" type="text" [(ngModel)]="corpo.tipopermissao" name="diretorio"  size="30" pInputText> 
+         
+    </span>
+    <br><br>
+    <button type="button" (click)="editarperfil()" class="btn btn-success" data-dismiss="modal">Salvar</button> &nbsp; &nbsp;
+    <button style="text-align: right;" routerLink='/sistema/configuracao/perfil' type="button" class="btn btn-secondary" style="text-align: left;" data-dismiss="modal">Voltar</button>
+    
+</div>
+  <br>
+
+  <div *ngIf="sucesso == true">
+    <div class="alert alert-success" id="sucesso" role="alert">
+        Atualização feita com sucesso!
+      </div>
+  </div>
+  
+
+
+</div>

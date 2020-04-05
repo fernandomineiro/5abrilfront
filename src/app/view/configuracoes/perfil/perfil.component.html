@@ -1,0 +1,42 @@
+<div  style="padding: 2% 2% 2% 2%; background-color: 
+White; border-style: solid 1px; margin: 2% 2% 2% 2%" >
+<div class="row">
+    <div style="font-size: 18px;" class="col-md-8"><span style="color: blue;" class="glyphicon glyphicon-search"></span>&nbsp;Consulta de perfis</div>
+      
+  </div>
+  <div style="background-color: #f2f2f2; border-radius: 5px; padding: 5px 5px 5px 5px; border: 1px solid #dddddd;">
+  
+  <div class="row">
+    <div class="col-md-3"><input type="text" [(ngModel)]="corpo.nome" placeholder="Nome" class="form-control" id="email"></div>
+    <div class="col-md-3">  <select [(ngModel)]="corpo.tipopermissao" style="height: 33px;" class="custom-select" id="inlineFormCustomSelectPref">
+      <option [value]="xzxzxz">Selecione...</option>
+      <option  [value]="i" *ngFor="let i of meu">{{i}}</option>
+      </select></div>
+    <div class="col-md-3"><button (click)="pesquisaperfil()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>&nbsp;Buscar</button></div>
+    <div class="col-md-3" style="text-align: right"><button type="button" routerLink='/sistema/configuracao/cadastro-perfil' class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> novo perfil</button></div>
+  </div>
+</div>
+  <br>
+
+  
+
+<p-table [value]="perfil" [responsive]="true" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:10%; text-align: center;">COD</th>
+            <th style="width:39%; text-align: center;" >NOME</th>
+            <th style="width:39%; text-align: center;">TIPO</th>
+            <th style="width:12%; text-align: center;">OPÇÕES</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-obj>
+        <tr>
+            <td style="width:6%">{{obj.id_perfil}}</td>
+            <td style="width:41%">{{obj.nome}}</td>
+            <td style="width:41%">{{obj.tipopermissao}}</td>
+            <td style="width:12%"> <button type="button" routerLink='/sistema/configuracao/edita-perfil/{{obj.id_perfil}}' class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button>&nbsp; </td>
+        </tr>
+    </ng-template>
+</p-table>
+</div>
+
